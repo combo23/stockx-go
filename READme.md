@@ -11,6 +11,7 @@ go get github.com/combo23/stockx-go
 ## Features
 
 - Manage Listings
+- Manage Orders
 
 ## Quick Start
 
@@ -44,7 +45,6 @@ func main() {
 ## TODO
 
 Implement Catalog API Endpoints
-Implement Order API Endpoints
 Improve Documentation
 Create Examples
 
@@ -53,6 +53,12 @@ Create Examples
 [Click Here]("https://developer.stockx.com/openapi/reference/overview/")
 
 ### Client Methods
+
+-`GetOrder(orderNumber string) (GetSingleOrderResponse, error)`
+
+-`GetActiveOrders(options ...ActiveOrdersOption) (OrdersResponse, error)`
+
+-`GetHistoricalOrders(options ...HistoricalOrdersOption) (OrdersResponse, error)`
 
 -`CreateListing(payload CreateLisingPayload) (ListingModificationResponse, error)`
 
