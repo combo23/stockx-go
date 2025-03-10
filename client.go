@@ -3,6 +3,9 @@ package stockxgo
 import "net/http"
 
 type StockXClient interface {
+	GetOrder(orderNumber string) (GetSingleOrderResponse, error)
+	GetActiveOrders(options ...ActiveOrdersOption) (OrdersResponse, error)
+	GetHistoricalOrders(options ...HistoricalOrdersOption) (OrdersResponse, error)
 	Authenticate() error
 	CreateListing(payload CreateLisingPayload) (ListingModificationResponse, error)
 	GetAllListings() (GetAllListingsResponse, error)
