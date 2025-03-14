@@ -2,13 +2,13 @@ package stockxgo
 
 import (
 	"errors"
-	"fmt"
 )
 
 var (
-	ErrUnauthorized = errors.New("unauthorized")
-	ErrBadRequest   = errors.New("bad request")
-	ErrInternal     = errors.New("internal server error")
+	ErrUnauthorized  = errors.New("unauthorized")
+	ErrBadRequest    = errors.New("bad request")
+	ErrInternal      = errors.New("internal server error")
+	ErrUnknownStatus = errors.New("unknown status code")
 )
 
 func statusCode(statusCode int) error {
@@ -22,6 +22,6 @@ func statusCode(statusCode int) error {
 	case 500:
 		return ErrInternal
 	default:
-		return fmt.Errorf("unknown error: %d", statusCode)
+		return ErrUnknownStatus
 	}
 }

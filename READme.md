@@ -44,9 +44,8 @@ func main() {
 
 ## TODO
 
-Implement Catalog API Endpoints
-Improve Documentation
-Create Examples
+- Implement Catalog API Endpoints
+- Improve Documentation
 
 ## API Reference
 
