@@ -49,7 +49,7 @@ func (s *stockXClient) SearchCatalog(opts ...SearchCatalogOption) (SearchCatalog
 	queryParams.Add("pageNumber", fmt.Sprintf("%d", request.PageNumber))
 	queryParams.Add("pageSize", fmt.Sprintf("%d", request.PageSize))
 
-	url := fmt.Sprintf("https://api.stockx.com/v2/catalog/products/search?%s", queryParams.Encode())
+	url := fmt.Sprintf("https://api.stockx.com/v2/catalog/search?%s", queryParams.Encode())
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
