@@ -7,6 +7,7 @@ type StockXClient interface {
 	GetActiveOrders(options ...ActiveOrdersOption) (OrdersResponse, error)
 	GetHistoricalOrders(options ...HistoricalOrdersOption) (OrdersResponse, error)
 	Authenticate() error
+	RefreshToken() error
 	CreateListing(payload CreateLisingPayload) (ListingModificationResponse, error)
 	GetAllListings(options ...GetAllListingsOption) (GetAllListingsResponse, error)
 	GetListing(listingID string) (GetListingResponse, error)
@@ -44,6 +45,15 @@ type Session struct {
 func NewClient(code, clientID, clientSecret string) StockXClient {
 	return &stockXClient{
 		code:         code,
+		clientID:     clientID,
+		clientSecret: clientSecret,
+		client:       &http.Client{},
+	}
+}
+
+func NewClientWithSession(session Session, clientID, clientSecret string) StockXClient {
+	return &stockXClient{
+		session:      session,
 		clientID:     clientID,
 		clientSecret: clientSecret,
 		client:       &http.Client{},
