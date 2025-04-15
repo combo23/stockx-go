@@ -22,6 +22,9 @@ type StockXClient interface {
 	GetSingleProductVariant(productID, variantID string) (ProductVariant, error)
 	GetProductMarketData(productID, currencyCode string) ([]MarketData, error)
 	GetProductMarketDataForVariant(productID, variantID, currencyCode string) (MarketData, error)
+	GetAccessToken() string
+	GetRefreshToken() string
+	GetExpiresIn() int
 }
 
 type stockXClient struct {

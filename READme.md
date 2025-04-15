@@ -89,6 +89,12 @@ func main() {
 	
 -`GetProductMarketDataForVariant(productID, variantID, currencyCode string) (MarketData, error)`
 
+-`GetAccessToken() string`
+	
+-`GetRefreshToken() string`
+	
+-`GetExpiresIn() int`
+
 ## Error Handling
 
 The library returns detailed errors that can be handled using standard Go error handling:

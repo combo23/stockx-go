@@ -110,6 +110,18 @@ func (s *stockXClient) RefreshToken() error {
 	return nil
 }
 
+func (s *stockXClient) GetAccessToken() string {
+	return s.session.AccessToken
+}
+
+func (s *stockXClient) GetRefreshToken() string {
+	return s.session.RefreshToken
+}
+
+func (s *stockXClient) GetExpiresIn() int {
+	return s.session.ExpiresIn
+}
+
 type AuthResponse struct {
 	AccessToken  string `json:"access_token"`
 	RefreshToken string `json:"refresh_token"`
