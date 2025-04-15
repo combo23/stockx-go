@@ -29,7 +29,7 @@ type stockXClient struct {
 	code         string
 	clientID     string
 	clientSecret string
-	session      Session
+	Session      Session
 }
 
 type Session struct {

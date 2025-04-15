@@ -140,7 +140,7 @@ func (s *stockXClient) GetHistoricalOrders(opts ...HistoricalOrdersOption) (Orde
 		return OrdersResponse{}, err
 	}
 
-	httpReq.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.session.AccessToken))
+	httpReq.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.Session.AccessToken))
 	httpReq.Header.Set("x-api-key", s.clientID)
 
 	resp, err := s.client.Do(httpReq)

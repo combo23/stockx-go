@@ -17,7 +17,7 @@ func (s *stockXClient) GetListing(listingID string) (GetListingResponse, error) 
 		return GetListingResponse{}, err
 	}
 
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.session.AccessToken))
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.Session.AccessToken))
 	req.Header.Set("x-api-key", s.clientID)
 
 	resp, err := s.client.Do(req)

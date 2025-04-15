@@ -65,7 +65,7 @@ func (s *stockXClient) CreateListing(payload CreateLisingPayload) (ListingModifi
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.session.AccessToken))
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.Session.AccessToken))
 	req.Header.Set("x-api-key", s.clientID)
 
 	resp, err := s.client.Do(req)
