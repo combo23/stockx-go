@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 )
 
 type SearchCatalogRequest struct {
@@ -43,7 +44,12 @@ func (s *stockXClient) SearchCatalog(opts ...SearchCatalogOption) (SearchCatalog
 		opt(request)
 	}
 
-	url := fmt.Sprintf("https://api.stockx.com/v2/catalog/products/search?query=%s&pageNumber=%d&pageSize=%d", request.Query, request.PageNumber, request.PageSize)
+	queryParams := url.Values{}
+	queryParams.Add("query", request.Query)
+	queryParams.Add("pageNumber", fmt.Sprintf("%d", request.PageNumber))
+	queryParams.Add("pageSize", fmt.Sprintf("%d", request.PageSize))
+
+	url := fmt.Sprintf("https://api.stockx.com/v2/catalog/products/search?%s", queryParams.Encode())
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
