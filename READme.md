@@ -12,6 +12,7 @@ go get github.com/combo23/stockx-go
 
 - Manage Listings
 - Manage Orders
+- Manage Catalog
 
 ## Quick Start
 
@@ -44,12 +45,11 @@ func main() {
 
 ## TODO
 
-- Implement Catalog API Endpoints
 - Improve Documentation
 
 ## API Reference
 
-[Click Here]("https://developer.stockx.com/openapi/reference/overview/")
+[Click Here](https://developer.stockx.com/openapi/reference/overview/)
 
 ### Client Methods
 
@@ -76,6 +76,18 @@ func main() {
 -`UpdateListing(listingID string, payload UpdateListingPayload) (ListingModificationResponse, error)`
 
 -`DeleteListing(listingID string) (ListingModificationResponse, error)`
+
+-`SearchCatalog(opts ...SearchCatalogOption) (SearchCatalogResponse, error)`
+	
+-`GetSingleProduct(productID string) (Product, error)`
+	
+-`GetAllProductVariants(productID string) ([]ProductVariant, error)`
+	
+-`GetSingleProductVariant(productID, variantID string) (ProductVariant, error)`
+	
+-`GetProductMarketData(productID, currencyCode string) ([]MarketData, error)`
+	
+-`GetProductMarketDataForVariant(productID, variantID, currencyCode string) (MarketData, error)`
 
 ## Error Handling
 

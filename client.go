@@ -16,6 +16,12 @@ type StockXClient interface {
 	DeactivateListing(listingID string) (ListingModificationResponse, error)
 	UpdateListing(listingID string, payload UpdateListingPayload) (ListingModificationResponse, error)
 	DeleteListing(listingID string) (ListingModificationResponse, error)
+	SearchCatalog(opts ...SearchCatalogOption) (SearchCatalogResponse, error)
+	GetSingleProduct(productID string) (Product, error)
+	GetAllProductVariants(productID string) ([]ProductVariant, error)
+	GetSingleProductVariant(productID, variantID string) (ProductVariant, error)
+	GetProductMarketData(productID, currencyCode string) ([]MarketData, error)
+	GetProductMarketDataForVariant(productID, variantID, currencyCode string) (MarketData, error)
 }
 
 type stockXClient struct {
