@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	client := stockxgo.NewClient("code", "client_id", "client_secret")
+	client := stockxgo.NewClient("code", "client_id", "client_secret", "api_key")
 
 	err := client.Authenticate()
 	if err != nil {

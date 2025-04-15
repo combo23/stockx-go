@@ -11,7 +11,7 @@ func main() {
 	// client_id - your client id
 	// client_secret - your client secret
 	// reference: https://developer.stockx.com/portal/authentication/
-	client := stockxgo.NewClient("code", "client_id", "client_secret")
+	client := stockxgo.NewClient("code", "client_id", "client_secret", "api_key")
 
 	err := client.Authenticate()
 	if err != nil {

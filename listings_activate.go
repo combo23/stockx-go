@@ -38,7 +38,7 @@ func (s *stockXClient) ActivateListing(listingID string, payload ActivateListing
 
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.session.AccessToken))
-	req.Header.Set("x-api-key", s.clientID)
+	req.Header.Set("x-api-key", s.apiKey)
 
 	resp, err := s.client.Do(req)
 	if err != nil {

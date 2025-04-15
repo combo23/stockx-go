@@ -34,6 +34,7 @@ type stockXClient struct {
 	clientID     string
 	clientSecret string
 	session      Session
+	apiKey       string
 }
 
 type Session struct {
@@ -42,20 +43,22 @@ type Session struct {
 	ExpiresIn    int
 }
 
-func NewClient(code, clientID, clientSecret string) StockXClient {
+func NewClient(code, clientID, clientSecret, apiKey string) StockXClient {
 	return &stockXClient{
 		code:         code,
 		clientID:     clientID,
 		clientSecret: clientSecret,
+		apiKey:       apiKey,
 		client:       &http.Client{},
 	}
 }
 
-func NewClientWithSession(session Session, clientID, clientSecret string) StockXClient {
+func NewClientWithSession(session Session, clientID, clientSecret, apiKey string) StockXClient {
 	return &stockXClient{
 		session:      session,
 		clientID:     clientID,
 		clientSecret: clientSecret,
+		apiKey:       apiKey,
 		client:       &http.Client{},
 	}
 }

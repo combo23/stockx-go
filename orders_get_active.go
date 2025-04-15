@@ -185,7 +185,7 @@ func (s *stockXClient) GetActiveOrders(opts ...ActiveOrdersOption) (OrdersRespon
 	}
 
 	httpReq.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.session.AccessToken))
-	httpReq.Header.Set("x-api-key", s.clientID)
+	httpReq.Header.Set("x-api-key", s.apiKey)
 
 	resp, err := s.client.Do(httpReq)
 	if err != nil {
