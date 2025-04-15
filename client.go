@@ -8,7 +8,7 @@ type StockXClient interface {
 	GetHistoricalOrders(options ...HistoricalOrdersOption) (OrdersResponse, error)
 	Authenticate() error
 	CreateListing(payload CreateLisingPayload) (ListingModificationResponse, error)
-	GetAllListings() (GetAllListingsResponse, error)
+	GetAllListings(options ...GetAllListingsOption) (GetAllListingsResponse, error)
 	GetListing(listingID string) (GetListingResponse, error)
 	GetAllListingOperations(listingID string) (GetAllListingOperationsResponse, error)
 	GetListingOperation(listingID, operationID string) (GetListingOperationResponse, error)

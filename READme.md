@@ -61,7 +61,7 @@ func main() {
 
 -`CreateListing(payload CreateLisingPayload) (ListingModificationResponse, error)`
 
--`GetAllListings() (GetAllListingsResponse, error)`
+-`GetAllListings(options ...GetAllListingsOption) (GetAllListingsResponse, error)`
 
 -`GetListing(listingID string) (GetListingResponse, error)`
 
