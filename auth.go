@@ -51,14 +51,14 @@ func (s *stockXClient) Authenticate() error {
 		return err
 	}
 
-	s.Session.AccessToken = authResp.AccessToken
-	s.Session.RefreshToken = authResp.RefreshToken
-	s.Session.ExpiresIn = authResp.ExpiresIn
+	s.session.AccessToken = authResp.AccessToken
+	s.session.RefreshToken = authResp.RefreshToken
+	s.session.ExpiresIn = authResp.ExpiresIn
 
 	go func() {
 		// automatically refresh the token when it expires
 		for {
-			time.Sleep(time.Duration(s.Session.ExpiresIn) * time.Second)
+			time.Sleep(time.Duration(s.session.ExpiresIn) * time.Second)
 			if err := s.RefreshToken(); err != nil {
 				log.Printf("failed to refresh token: %s", err)
 			}
@@ -73,7 +73,7 @@ func (s *stockXClient) RefreshToken() error {
 	data.Set("grant_type", "refresh_token")
 	data.Set("client_id", s.clientID)
 	data.Set("client_secret", s.clientSecret)
-	data.Set("refresh_token", s.Session.RefreshToken)
+	data.Set("refresh_token", s.session.RefreshToken)
 	data.Set("audience", "gateway.stockx.com")
 
 	req, err := http.NewRequest(http.MethodPost, AuthEndpoint, bytes.NewBufferString(data.Encode()))
@@ -104,8 +104,8 @@ func (s *stockXClient) RefreshToken() error {
 		return err
 	}
 
-	s.Session.AccessToken = refreshResp.AccessToken
-	s.Session.ExpiresIn = refreshResp.ExpiresIn
+	s.session.AccessToken = refreshResp.AccessToken
+	s.session.ExpiresIn = refreshResp.ExpiresIn
 
 	return nil
 }
