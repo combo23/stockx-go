@@ -29,6 +29,10 @@ func (s *stockXClient) GetSingleProductVariant(productID, variantID string) (Pro
 
 	defer resp.Body.Close()
 
+	if err := statusCode(resp.StatusCode); err != nil {
+		return ProductVariant{}, err
+	}
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return ProductVariant{}, err

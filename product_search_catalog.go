@@ -66,6 +66,10 @@ func (s *stockXClient) SearchCatalog(opts ...SearchCatalogOption) (SearchCatalog
 
 	defer resp.Body.Close()
 
+	if err := statusCode(resp.StatusCode); err != nil {
+		return SearchCatalogResponse{}, err
+	}
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return SearchCatalogResponse{}, err

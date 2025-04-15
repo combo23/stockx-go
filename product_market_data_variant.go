@@ -29,6 +29,10 @@ func (s *stockXClient) GetProductMarketDataForVariant(productID, variantID, curr
 
 	defer resp.Body.Close()
 
+	if err := statusCode(resp.StatusCode); err != nil {
+		return MarketData{}, err
+	}
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return MarketData{}, err

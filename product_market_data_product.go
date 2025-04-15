@@ -29,6 +29,10 @@ func (s *stockXClient) GetProductMarketData(productID, currencyCode string) ([]M
 
 	defer resp.Body.Close()
 
+	if err := statusCode(resp.StatusCode); err != nil {
+		return nil, err
+	}
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return []MarketData{}, err

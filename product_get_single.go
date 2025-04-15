@@ -29,6 +29,10 @@ func (s *stockXClient) GetSingleProduct(productID string) (Product, error) {
 
 	defer resp.Body.Close()
 
+	if err := statusCode(resp.StatusCode); err != nil {
+		return Product{}, err
+	}
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return Product{}, err
