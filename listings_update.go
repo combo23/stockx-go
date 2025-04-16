@@ -31,7 +31,7 @@ func (s *stockXClient) UpdateListing(listingID string, payload UpdateListingPayl
 		return ListingModificationResponse{}, err
 	}
 
-	req, err := http.NewRequest("PUT", fmt.Sprintf(UpdateListingEndpoint, listingID), bytes.NewBuffer(payloadRaw))
+	req, err := http.NewRequest("PATCH", fmt.Sprintf(UpdateListingEndpoint, listingID), bytes.NewBuffer(payloadRaw))
 	if err != nil {
 		return ListingModificationResponse{}, err
 	}
